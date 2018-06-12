@@ -29,7 +29,6 @@ const asyncEndpoint = func => wrap(async function(req, res) {
 });
 
 const router = express.Router();
-
 router.use(morgan(config.get('log-format', 'tiny')));
 router.all('*', ensurePHPSession);
 

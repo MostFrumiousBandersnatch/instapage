@@ -806,6 +806,23 @@ os-tmpdir@~1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/os-tmpdir/-/os-tmpdir-1.0.2.tgz#bbe67406c79aa85c5cfec766fe5734555dfa1274"
 
+parse5-html-rewriting-stream@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/parse5-html-rewriting-stream/-/parse5-html-rewriting-stream-5.0.0.tgz#6e7dc7a99aa6b831f1313e3db98f514d7ddab66a"
+  dependencies:
+    parse5 "^5.0.0"
+    parse5-sax-parser "^5.0.0"
+
+parse5-sax-parser@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/parse5-sax-parser/-/parse5-sax-parser-5.0.0.tgz#6dabb37eabc891495dac9616d68e2d476866ca51"
+  dependencies:
+    parse5 "^5.0.0"
+
+parse5@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/parse5/-/parse5-5.0.0.tgz#4d02710d44f3c3846197a11e205d4ef17842b81a"
+
 parseurl@~1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/parseurl/-/parseurl-1.3.2.tgz#fc289d4ed8993119460c156253262cdc8de65bf3"
