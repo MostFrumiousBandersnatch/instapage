@@ -17,6 +17,10 @@ paths:
       responses:
         400:
           description: "php-session-id missed"
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Response"
     post:
       summary: "Publish new page"
       consumes:
@@ -44,6 +48,8 @@ paths:
           description: "php-session-id missed"
         201:
           description: "page published"
+          schema:
+            $ref: "#/definitions/Response"
           
   /landing-pages/{pageId}:
     put:
@@ -73,3 +79,22 @@ paths:
       responses:
         400:
           description: "php-session-id missed"
+        201:
+          description: "page published"
+          schema:
+            $ref: "#/definitions/Response"
+definitions:
+  Response:
+    type: "object"
+    required:
+    - "success"
+    - "error"
+    properties:
+      success:
+        type: "boolean"
+      error:
+        type: "boolean"
+      data:
+        type: "object"
+      error-message:
+        type: "string"
