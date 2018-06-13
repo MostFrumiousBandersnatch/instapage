@@ -31,6 +31,8 @@ app.get('/:slug', function(req, res) {
 
     fetch(`http://${slug}.pagedemo.co/`).then(
         response => {
+            res.status(response.status);
+
             response.body.pipe(
                 decoratePageWith(HEADER)
             ).pipe(res);
