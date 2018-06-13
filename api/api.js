@@ -35,9 +35,12 @@ const ensurePHPSession = function (req, res, next) {
 const asyncEndpoint = func => wrap(async function(req, res) {
     try {
         const r = await func(req);
-        res.send(r);
+        const [ data, status=200 ] = _.isArray(r) ? r : [r];
+
+        res.status(status);
+        res.send(data);
     } catch (e) {
-        replyWithError(500, String(e), res);
+        replyWithError(e.code || 500, e.message || String(e), res);
     }
 });
 
@@ -59,7 +62,7 @@ const checkPageUrl = _.curry((phpSessId, url, pageId) => fetch(
 ).then(
     ({ error, error_message }) => {
         if (error) {
-            throw error_message;
+            throw { code: 409, message: error_message };
         } else {
             return pageId;
         }
@@ -206,6 +209,8 @@ router.route('/landing-pages').get(
             checkPageUrl(phpSessId, pageUrl)
         ).then(
             publishPage(phpSessId, pageUrl)
+        ).then(
+            data => [data, 201]
         );
     })
 );

@@ -1,0 +1,75 @@
+swagger: "2.0"
+info:
+  description: "Instapage public API"
+  version: "1.0.0"
+  title: "Instapage public API"
+
+basePath: "/api/v1"
+
+schemes:
+- "http"
+paths:
+  /landing-pages:
+    get:
+      summary: "Provide a list of pages"
+      produces:
+      - "application/json"
+      responses:
+        400:
+          description: "php-session-id missed"
+    post:
+      summary: "Publish new page"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "object"
+          required:
+          - "slug"
+          - "page-name"
+          - "layout"
+          properties:
+            slug:
+              type: "string"
+            page-name:
+              type: "string"
+            layout:
+              type: "integer"
+              format: "int32"
+      responses:
+        400:
+          description: "php-session-id missed"
+        201:
+          description: "page published"
+          
+  /landing-pages/{pageId}:
+    put:
+      summary: "Update a slug for page"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "pageId"
+        description: "ID of page"
+        required: true
+        type: "integer"
+        format: "int32"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "object"
+          required:
+          - "slug"
+          properties:
+            slug:
+              type: "string"
+              description: "slug to replace current one"
+      responses:
+        400:
+          description: "php-session-id missed"
